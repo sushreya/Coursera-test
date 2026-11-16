@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unravel Design System</title>
+<meta name="description" content="A case study: replacing per-client style guides with one token-based design system that white-labels a client in a day.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Brand switcher: re-themes the whole page, like a mode switch in Figma -->
+<header class="bar" role="banner">
+  <div class="wrap bar__in">
+    <a class="bar__title" href="#top">Unravel DS</a>
+    <div class="bar__switch" role="group" aria-label="Switch client brand">
+      <span class="bar__label">Brand mode</span>
+      <div id="brandButtons" class="chips"></div>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero wrap">
+  <p class="eyebrow">Case study · Design systems · White-label</p>
+  <h1>One system.<br><em>Any client</em>, in a day.</h1>
+  <p class="lede">Before, every new client meant a new style guide and every screen rebuilt to match. I built the design system that turned a client into a single setting you switch.</p>
+  <p class="hint">↑ Try the brand switcher. This whole page is themed by it.</p>
+
+  <dl class="facts">
+    <div><dt>7</dt><dd>brands in one system</dd></div>
+    <div><dt>~20</dt><dd>client style guides it replaced</dd></div>
+    <div><dt>30–60 min</dt><dd>to add a new brand, design side</dd></div>
+    <div><dt>1 day</dt><dd>promised, design plus engineering</dd></div>
+  </dl>
+
+  <ul class="meta">
+    <li><span>Role</span>Product designer, my first project here</li>
+    <li><span>Scope</span>Tokens, components, documentation</li>
+    <li><span>Built in</span>Figma Variables, from scratch</li>
+  </ul>
+</section>
+
+<!-- BEFORE -->
+<section class="sec wrap" id="before">
+  <p class="eyebrow">01 · Before</p>
+  <h2>Every client got their own style guide.</h2>
+  <div class="two">
+    <div>
+      <p>A new client meant a new style guide: typography, colour palette, icons and micro components. Then came the work of recreating the happy flow and attaching each screen to the new styles.</p>
+      <p>Underneath, it was the same document every time. Same sections and same type tiers. Only the values changed. Because the values were typed onto the canvas as notes, not bound to anything, one change meant touching every screen again.</p>
+    </div>
+    <div class="callout">
+      <h3>The shape of the problem</h3>
+      <ul>
+        <li>A style guide rebuilt per client</li>
+        <li>Screens re-attached to new styles by hand</li>
+        <li>Design: a few days per client</li>
+        <li>Engineering: a few more days on top</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="small">Clients, each with their own file page</h3>
+  <div id="clientWall" class="wall" aria-label="Client style guides"></div>
+  <p class="note">Simplified recreations. The real guides share the same structure, with the same type tiers and component sets redrawn for each client.</p>
+</section>
+
+<!-- ING -->
+<section class="sec wrap" id="ing">
+  <p class="eyebrow">02 · One onboarding, up close</p>
+  <h2>ING: promised in a week, took about two.</h2>
+  <div class="two">
+    <div>
+      <p>ING came on before the design system was ready. Engineering and QA needed reference screens, so I created a style guide, the components and every screen they needed to build against: the landing page, hotel listing with filters and map, hotel details with gallery and surroundings, room listing, and booking confirmation.</p>
+      <p>That was roughly <strong>90 screens</strong> across mobile and desktop. Design took me about <strong>two days</strong>. Because there was no system to inherit from, engineering built it all again, and the full onboarding took about <strong>two weeks</strong>.</p>
+    </div>
+    <figure class="bars" aria-label="ING onboarding timeline">
+      <div class="bar-row"><span>Promised</span><div class="track"><i style="--w:50%" class="b b--muted"></i></div><b>1 week</b></div>
+      <div class="bar-row"><span>Actual</span><div class="track"><i style="--w:100%" class="b b--warn"></i></div><b>~2 weeks</b></div>
+      <div class="bar-row"><span>of which design</span><div class="track"><i style="--w:14.3%" class="b b--brand"></i></div><b>~2 days</b></div>
+      <figcaption>Design wasn't the slow part. Doing the same work twice was: once for design, once in code.</figcaption>
+    </figure>
+  </div>
+
+  <div class="stats">
+    <div><b>~41</b><span>mobile screens</span></div>
+    <div><b>~40</b><span>desktop screens</span></div>
+    <div><b>5</b><span>flow sections</span></div>
+    <div><b>1</b><span>new style guide</span></div>
+  </div>
+</section>
+
+<!-- GOAL -->
+<section class="sec sec--tint">
+  <div class="wrap">
+    <p class="eyebrow">03 · The goal</p>
+    <h2 class="big">White-label a client in <em>one day</em>.</h2>
+    <p class="lede">That was my first project: stop rebuilding, and make a brand something you choose.</p>
+  </div>
+</section>
+
+<!-- SYSTEM -->
+<section class="sec wrap" id="system">
+  <p class="eyebrow">04 · The system</p>
+  <h2>Three layers, so a brand is just a mode.</h2>
+  <div class="layers">
+    <article>
+      <span class="n">1</span>
+      <h3>Primitives</h3>
+      <p class="tag">The warehouse</p>
+      <p>Raw values. Every brand's colour scales live here and are rarely used directly.</p>
+      <code>color/brand/primary/500</code>
+    </article>
+    <article class="hl">
+      <span class="n">2</span>
+      <h3>Semantic</h3>
+      <p class="tag">The context</p>
+      <p>Describes what an element <em>is</em>, not how it looks. Components use only these, and they adapt per brand.</p>
+      <code>action/primary</code>
+    </article>
+    <article>
+      <span class="n">3</span>
+      <h3>Layout</h3>
+      <p class="tag">The adaptation · in progress</p>
+      <p>Responsive values that shift between mobile and desktop.</p>
+      <code>space/page-gutter</code>
+    </article>
+  </div>
+
+  <h3 class="small">Token explorer</h3>
+  <p class="sub">Pick a brand above. The same semantic token resolves to a different primitive each time.</p>
+  <div class="explorer" aria-live="polite">
+    <div class="explorer__head">
+      <b id="exBrand">Unravel</b>
+      <span id="exMode" class="mono">Mode: 01. Unravel</span>
+    </div>
+    <div id="exRamp" class="ramp" aria-label="Primary colour scale"></div>
+    <table class="tokens">
+      <thead><tr><th>Semantic token</th><th>Points to</th><th>Resolves to</th></tr></thead>
+      <tbody id="exRows"></tbody>
+    </table>
+  </div>
+  <p class="note">Role mapping is simplified for this demo. Scales and hex values come from the system's Primitives collection.</p>
+</section>
+
+<!-- LIVE DEMO -->
+<section class="sec sec--tint" id="demo">
+  <div class="wrap">
+    <p class="eyebrow">05 · Same components, every brand</p>
+    <h2>Nothing below knows which client it's for.</h2>
+    <p class="sub">These components use semantic tokens only. Switch the brand and they follow, which is exactly how the Figma components behave when I change a mode.</p>
+
+    <div class="demo">
+      <div class="panel">
+        <h4>Buttons</h4>
+        <div class="row">
+          <button class="btn btn--primary">Book now</button>
+          <button class="btn btn--secondary">View rooms</button>
+          <button class="btn btn--tertiary">Details ›</button>
+          <button class="btn btn--primary" disabled>Disabled</button>
+        </div>
+        <h4>Tags</h4>
+        <div class="row" id="tagRow">
+          <button class="tagc is-on" aria-pressed="true">Travel</button>
+          <button class="tagc" aria-pressed="false">Dine</button>
+          <button class="tagc" aria-pressed="false">Shop</button>
+        </div>
+        <h4>Controls</h4>
+        <div class="row">
+          <label class="sw"><input type="checkbox" checked><span class="sw__t"></span>Free cancellation</label>
+          <div class="stepper" aria-label="Guests">
+            <button aria-label="Fewer guests" id="minus">−</button><output id="count">2</output><button aria-label="More guests" id="plus">+</button>
+          </div>
+        </div>
+        <h4>Input</h4>
+        <label class="field"><span>Where to?</span><input type="text" placeholder="Find a destination"></label>
+      </div>
+
+      <div class="panel panel--card">
+        <div class="tabs" role="tablist">
+          <button role="tab" aria-selected="true">Stays</button>
+          <button role="tab" aria-selected="false">Flights</button>
+          <button role="tab" aria-selected="false">Deals</button>
+        </div>
+        <article class="hotel">
+          <div class="hotel__img" aria-hidden="true"></div>
+          <div class="hotel__body">
+            <span class="badge">Members save up to 50%</span>
+            <h5>Harbour View Suites</h5>
+            <p>Best price guarantee · Instant confirmation</p>
+            <div class="hotel__foot">
+              <div><small>from</small> <strong>AED 640</strong></div>
+              <button class="btn btn--primary btn--sm">Select</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CRAFT -->
+<section class="sec wrap" id="craft">
+  <p class="eyebrow">06 · How it was made</p>
+  <h2>Built from a rectangle, before AI.</h2>
+  <div class="two">
+    <div>
+      <p>I made every part of this by hand, in Figma. The button began as a rectangle: round the corners, bind the fill to a token, add a label, then define its states. No generators, no shortcuts.</p>
+      <p>The result covers about <strong>35 components</strong> across Actions, Inputs, Navigation, Content, Feedback and Utility, plus foundations for colour, typography, border, spacing, elevation, grids, icons and shapes.</p>
+      <p>It's also honest work-in-progress. The file still has a parking lot, a modal marked [OLD] next to the new one, and a layout layer I'm still building. I'm cleaning it up as I go.</p>
+    </div>
+    <div class="anatomy" aria-label="Button anatomy, step by step">
+      <div class="step"><div class="vis"><i class="rect"></i></div><b>1 Rectangle</b></div>
+      <div class="step"><div class="vis"><i class="rect rect--round"></i></div><b>2 Corner radius</b></div>
+      <div class="step"><div class="vis"><i class="rect rect--round rect--fill"></i></div><b>3 Fill → token</b></div>
+      <div class="step"><div class="vis"><span class="btn btn--primary btn--static">Label</span></div><b>4 Label + states</b></div>
+    </div>
+  </div>
+  <div class="inv" id="inventory"></div>
+</section>
+
+<!-- ONBOARD -->
+<section class="sec sec--tint" id="onboard">
+  <div class="wrap">
+    <p class="eyebrow">07 · Adding a new client</p>
+    <h2>Roughly an hour of design.</h2>
+    <ol class="steps">
+      <li><b>Research the palette</b><span>Brand guidelines make this faster. Without them, I read it from the client's product.</span></li>
+      <li><b>Add a mode</b><span>Fill the brand's primitive scales in the Primitives collection.</span></li>
+      <li><b>Map the semantics</b><span>Point action, surface and text tokens at the new scales.</span></li>
+      <li><b>Switch and test</b><span>Flip the mode on real screens and check contrast and states.</span></li>
+    </ol>
+    <div class="compare">
+      <div>
+        <h3>Before</h3>
+        <ul><li>New style guide per client</li><li>Screens rebuilt and re-attached</li><li>ING: ~2 days design, ~2 weeks total</li></ul>
+      </div>
+      <div class="hl">
+        <h3>With the system</h3>
+        <ul><li>One new mode</li><li>Screens update on their own</li><li>~1 hour design. The promise to clients: live in a day.</li></ul>
+      </div>
+    </div>
+    <p class="note">In practice, the full onboarding including engineering runs a little over a day.</p>
+  </div>
+</section>
+
+<!-- EVOLUTION -->
+<section class="sec wrap" id="evolve">
+  <p class="eyebrow">08 · The product moved on</p>
+  <h2>From Silk to Spice.</h2>
+  <div class="two">
+    <div>
+      <h3>Silk, the original codebase</h3>
+      <p>My first version was built for Silk, a hand-written codebase. As I understand it from engineering, the design system also lives in code there. If I change a value such as surface colour for one client, the change carries across all the others.</p>
+    </div>
+    <div>
+      <h3>Spice, the new codebase</h3>
+      <p>The product is moving to Spice, written entirely with AI. The design system has to carry across the move. The token structure is what makes that possible, because the code depends on what a token means, not how a screen was drawn.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HANDOFF -->
+<section class="sec sec--tint" id="rules">
+  <div class="wrap">
+    <p class="eyebrow">09 · The rules</p>
+    <h2>How designers and developers use it.</h2>
+    <div class="dd">
+      <div class="do"><h3>✓ Do</h3><ul>
+        <li>Use semantic tokens such as <code>action/primary</code>.</li>
+        <li>Let the brand mode change the look.</li>
+        <li>Describe what an element is, not what it looks like.</li></ul></div>
+      <div class="dont"><h3>✕ Don't</h3><ul>
+        <li>Use a hardcoded hex code.</li>
+        <li>Reach for primitives when a semantic token exists.</li>
+        <li>Rebuild a component for one client.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- NEXT -->
+<section class="sec wrap" id="next">
+  <p class="eyebrow">10 · What's next</p>
+  <h2>Still being built.</h2>
+  <ul class="next">
+    <li>The layout layer, with responsive values for mobile and desktop.</li>
+    <li>Tidying the file: retiring old modals, finishing cards, grids and breakpoints.</li>
+    <li>Carrying the system into Spice.</li>
+  </ul>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <span>Unravel Design System · case study</span>
+    <a href="#top">Back to top ↑</a>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
